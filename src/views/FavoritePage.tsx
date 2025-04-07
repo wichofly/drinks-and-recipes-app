@@ -1,5 +1,11 @@
+import Header from '../components/Header';
+
 const FavoritePage = () => {
-  return <div className="text-2xl text-cyan-500">FavoritePage</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 
 export default FavoritePage;

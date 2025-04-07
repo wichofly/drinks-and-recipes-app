@@ -1,5 +1,11 @@
+import Header from "../components/Header";
+
 const IndexPage = () => {
-  return <div className="text-2xl text-teal-500 font-semibold">IndexPage</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 
 export default IndexPage;
