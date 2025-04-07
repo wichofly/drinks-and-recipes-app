@@ -1,9 +1,7 @@
-import Header from "../components/Header";
-
 const IndexPage = () => {
   return (
     <>
-      <Header />
+      <h1>Index</h1>
     </>
   );
 };

@@ -1,9 +1,7 @@
-import Header from '../components/Header';
-
 const FavoritePage = () => {
   return (
     <>
-      <Header />
+      <h1>Favorites</h1>
     </>
   );
 };
