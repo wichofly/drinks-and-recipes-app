@@ -1,7 +1,11 @@
+import { useAppStore } from "../stores/useAppStore";
+
 const IndexPage = () => {
+  const recipe = useAppStore((state) =>state.categories) 
+
   return (
     <>
-      <h1>Index</h1>
+      <h1>Index : {recipe}</h1>
     </>
   );
 };
