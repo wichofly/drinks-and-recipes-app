@@ -1,8 +1,13 @@
-import { useEffect, useMemo } from 'react';
+import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAppStore } from '../stores/useAppStore';
 
 const Header = () => {
+  const [searchFilters, setSearchFilters] = useState({
+    ingredient: '',
+    category: '',
+  });
+
   const { pathname } = useLocation();
 
   // Check if the current path is the home page
@@ -15,6 +20,16 @@ const Header = () => {
   useEffect(() => {
     fetchCategories();
   }, [fetchCategories]);
+
+  const handleChange = (
+    e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
+    setSearchFilters((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   return (
     <header className={isHome ? 'bg-header' : 'bg-slate-800'}>
@@ -67,20 +82,24 @@ const Header = () => {
                 name="ingredient"
                 className="bg-white p-3 w-full rounded-lg focus:outline-none"
                 placeholder="e.g. Drinks, Vodka, Gin, Coffee."
+                onChange={handleChange}
+                value={searchFilters.ingredient}
               />
             </div>
 
             <div className="space-y-4">
               <label
-                htmlFor="ingredient"
+                htmlFor="category"
                 className="block text-white font-bold text-lg"
               >
                 Category
               </label>
               <select
-                id="ingredient"
-                name="ingredient"
+                id="category"
+                name="category"
                 className="bg-white p-3 w-full rounded-lg focus:outline-none"
+                onChange={handleChange}
+                value={searchFilters.ingredient}
               >
                 <option value="">-- Select --</option>
                 {categories.drinks.map((category) => (
