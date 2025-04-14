@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAppStore } from '../stores/useAppStore';
 
@@ -14,12 +14,28 @@ const Header = () => {
   const isHome = useMemo(() => pathname === '/', [pathname]);
 
   const fetchCategories = useAppStore((state) => state.fetchCategories);
+
   const categories = useAppStore((state) => state.categories);
   console.log(categories);
+
+  const searchRecipes = useAppStore((state) => state.searchRecipes);
 
   useEffect(() => {
     fetchCategories();
   }, [fetchCategories]);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Check if all inputs are filled
+    if (Object.values(searchFilters).includes('')) {
+      alert('All inputs are required');
+      return;
+    }
+
+    // Consult Recipes API
+    searchRecipes(searchFilters)
+  };
 
   const handleChange = (
     e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>
@@ -65,7 +81,10 @@ const Header = () => {
         </div>
 
         {isHome && (
-          <form className="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6">
+          <form
+            className="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6"
+            onSubmit={handleSubmit}
+          >
             <h2 className="text-2xl text-center text-white font-bold uppercase">
               Search for a Recipe
             </h2>
@@ -99,7 +118,7 @@ const Header = () => {
                 name="category"
                 className="bg-white p-3 w-full rounded-lg focus:outline-none"
                 onChange={handleChange}
-                value={searchFilters.ingredient}
+                value={searchFilters.category}
               >
                 <option value="">-- Select --</option>
                 {categories.drinks.map((category) => (

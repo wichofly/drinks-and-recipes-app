@@ -7,3 +7,9 @@ export const CategoriesAPIResponseSchema = z.object({
     })
   ),
 });
+
+// To make the consult to the API we require ingredient and category
+export const SearchFilterSchema = z.object({
+  ingredient: z.string(),
+  category: z.string(),
+});
