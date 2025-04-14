@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { CategoriesAPIResponseSchema } from '../schemas/recipes-schema';
+import {
+  CategoriesAPIResponseSchema,
+  DrinksAPIResponse,
+} from '../schemas/recipes-schema';
 import { SearchFilter } from '../types';
 
 export const getCategories = async () => {
@@ -8,6 +11,7 @@ export const getCategories = async () => {
   const { data } = await axios(url);
 
   const result = CategoriesAPIResponseSchema.safeParse(data);
+  
   if (result.success) {
     return result.data;
   }
@@ -18,5 +22,9 @@ export const getRecipes = async (filters: SearchFilter) => {
 
   const { data } = await axios(url);
 
-  return data;
+  const result = DrinksAPIResponse.safeParse(data);
+
+  if (result.success) {
+    return result.data;
+  }
 };
