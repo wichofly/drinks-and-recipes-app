@@ -17,7 +17,7 @@ const DrinkCard = ({ drink }: DrinkCardProps) => {
 
       <div className="p-5">
         <h2 className="text-2xl truncate font-medium">{drink.strDrink}</h2>
-        <button className="bg-orange-400 hover:bg-orange-500 mt-5 w-full p-3 font-semibold text-white text-lg rounded-md">
+        <button className="bg-orange-400 hover:bg-orange-500 transition-colors duration-500 ease-in-out mt-5 w-full p-3 font-semibold text-white text-lg rounded-md">
           View Recipe
         </button>
       </div>

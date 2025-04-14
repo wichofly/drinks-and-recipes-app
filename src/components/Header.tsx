@@ -34,7 +34,7 @@ const Header = () => {
     }
 
     // Consult Recipes API
-    searchRecipes(searchFilters)
+    searchRecipes(searchFilters);
   };
 
   const handleChange = (
@@ -134,7 +134,7 @@ const Header = () => {
             <input
               type="submit"
               value="Search Recipes"
-              className="cursor-pointer bg-orange-700 hover:bg-orange-800 text-white font-semibold w-full p-2 rounded-lg uppercase"
+              className="cursor-pointer bg-orange-700 hover:bg-orange-800 transition-colors duration-500 ease-in-out text-white font-semibold w-full p-2 rounded-lg uppercase"
             />
           </form>
         )}
