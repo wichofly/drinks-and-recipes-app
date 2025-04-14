@@ -1,3 +1,4 @@
+import DrinkCard from '../components/DrinkCard';
 import { useAppStore } from '../stores/useAppStore';
 
 const IndexPage = () => {
@@ -12,7 +13,7 @@ const IndexPage = () => {
       {hasDrinks ? (
         <>
           {drinks.drinks.map((drink) => (
-            <p key={drink.idDrink}>{drink.strDrink}</p>
+            <DrinkCard key={drink.idDrink} drink={drink} />
           ))}
         </>
       ) : (
