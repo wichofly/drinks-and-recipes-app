@@ -5,6 +5,7 @@ import {
   DialogTitle,
 } from '@headlessui/react';
 import { useAppStore } from '../stores/useAppStore';
+import { JSX } from 'react';
 
 const Modal = () => {
   const modal = useAppStore((state) => state.modal);
@@ -13,7 +14,7 @@ const Modal = () => {
 
   // Dynamically extract ingredient + measure pairs
   const getIngredientsWithMeasures = () => {
-    const ingredients: { ingredient: string; measure: string }[] = [];
+    const ingredients: JSX.Element[] = [];
 
     for (let i = 1; i <= 6; i++) {
       const ingredient =
@@ -21,11 +22,12 @@ const Modal = () => {
       const measure =
         selectedRecipe[`strMeasure${i}` as keyof typeof selectedRecipe];
 
-      if (ingredient) {
-        ingredients.push({
-          ingredient,
-          measure: measure ?? '',
-        });
+      if (ingredient && measure) {
+        ingredients.push(
+          <li key={i} className="text-lg font-normal">
+            {ingredient} - {measure}
+          </li>
+        );
       }
     }
 
@@ -52,18 +54,11 @@ const Modal = () => {
             <Description className="text-2xl">
               Ingredients & Measures
             </Description>
-            <ul>
-              {getIngredientsWithMeasures().map(
-                ({ ingredient, measure }, index) => (
-                  <li key={index}>
-                    <span>{ingredient}</span>{' '}
-                    {measure && <span>- {measure}</span>}
-                  </li>
-                )
-              )}
+            <ul className="list-disc list-inside space-y-1">
+              {getIngredientsWithMeasures()}
             </ul>
 
-            <p className="text-lg">{selectedRecipe.strInstructions}</p>
+            <p className="">{selectedRecipe.strInstructions}</p>
             <div className="flex gap-4">
               <button onClick={closeModal}>Cancel</button>
             </div>
