@@ -59,8 +59,19 @@ const Modal = () => {
             </ul>
 
             <p className="">{selectedRecipe.strInstructions}</p>
-            <div className="flex gap-4">
-              <button onClick={closeModal}>Cancel</button>
+            <div className="flex justify-between gap-4">
+              <button
+                className="w-full rounded bg-gray-600 p-3 font-semibold uppercase text-white shadow hover:bg-gray-500"
+                onClick={closeModal}
+              >
+                Close
+              </button>
+              <button
+                className="w-full rounded bg-orange-600 p-3 font-semibold uppercase text-white shadow hover:bg-orange-500"
+                //onClick={() => handleFavorites()}
+              >
+                Add to Favorites
+              </button>
             </div>
           </DialogPanel>
         </div>
