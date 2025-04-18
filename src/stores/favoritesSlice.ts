@@ -29,6 +29,7 @@ export const createFavoriteSlice: StateCreator<FavoriteSliceType> = (
         favorites: [...state.favorites, recipe],
       }));
 
+      // Another option to code it.
       // set({
       //   favorites: [...get().favorites, recipe],
       // });
