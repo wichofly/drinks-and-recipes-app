@@ -61,13 +61,13 @@ const Modal = () => {
             <p className="">{selectedRecipe.strInstructions}</p>
             <div className="flex justify-between gap-4">
               <button
-                className="w-full rounded bg-gray-600 p-3 font-semibold uppercase text-white shadow hover:bg-gray-500"
+                className="w-full rounded bg-gray-500 p-3 font-semibold uppercase text-white shadow hover:bg-gray-600 transition-colors duration-500 ease-in-out"
                 onClick={closeModal}
               >
                 Close
               </button>
               <button
-                className="w-full rounded bg-orange-600 p-3 font-semibold uppercase text-white shadow hover:bg-orange-500"
+                className="w-full rounded bg-orange-400 p-3 font-semibold uppercase text-white shadow hover:bg-orange-500 transition-colors duration-500 ease-in-out"
                 //onClick={() => handleFavorites()}
               >
                 Add to Favorites
