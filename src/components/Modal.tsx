@@ -11,6 +11,7 @@ const Modal = () => {
   const modal = useAppStore((state) => state.modal);
   const closeModal = useAppStore((state) => state.closeModal);
   const selectedRecipe = useAppStore((state) => state.selectedRecipe);
+  const handleFavorite = useAppStore((state) => state.handleFavorite);
 
   // Dynamically extract ingredient + measure pairs
   const getIngredientsWithMeasures = () => {
@@ -68,7 +69,7 @@ const Modal = () => {
               </button>
               <button
                 className="w-full rounded bg-orange-400 p-3 font-semibold uppercase text-white shadow hover:bg-orange-500 transition-colors duration-500 ease-in-out"
-                //onClick={() => handleFavorites()}
+                onClick={() => handleFavorite(selectedRecipe)}
               >
                 Add to Favorites
               </button>
