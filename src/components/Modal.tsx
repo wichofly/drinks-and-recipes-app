@@ -12,6 +12,7 @@ const Modal = () => {
   const closeModal = useAppStore((state) => state.closeModal);
   const selectedRecipe = useAppStore((state) => state.selectedRecipe);
   const handleFavorite = useAppStore((state) => state.handleFavorite);
+  const favoriteExists = useAppStore((state) => state.favoriteExists);
 
   // Dynamically extract ingredient + measure pairs
   const getIngredientsWithMeasures = () => {
@@ -71,7 +72,9 @@ const Modal = () => {
                 className="w-full rounded bg-orange-400 p-3 font-semibold uppercase text-white shadow hover:bg-orange-500 transition-colors duration-500 ease-in-out"
                 onClick={() => handleFavorite(selectedRecipe)}
               >
-                Add to Favorites
+                {favoriteExists(selectedRecipe.idDrink)
+                  ? 'Delete from Favorites'
+                  : 'Add to Favorites'}
               </button>
             </div>
           </DialogPanel>
