@@ -70,7 +70,10 @@ const Modal = () => {
               </button>
               <button
                 className="w-full rounded bg-orange-400 p-3 font-semibold uppercase text-white shadow hover:bg-orange-500 transition-colors duration-500 ease-in-out"
-                onClick={() => handleFavorite(selectedRecipe)}
+                onClick={() => {
+                  handleFavorite(selectedRecipe);
+                  closeModal();
+                }}
               >
                 {favoriteExists(selectedRecipe.idDrink)
                   ? 'Delete from Favorites'
