@@ -1,7 +1,26 @@
+import DrinkCard from '../components/DrinkCard';
+import { useAppStore } from '../stores/useAppStore';
+
 const FavoritePage = () => {
+  const favorites = useAppStore((state) => state.favorites);
+
+  const hasFavorites = favorites.length > 0;
+
   return (
     <>
-      <h1>Favorites</h1>
+      <h1 className="text-6xl font-semibold">Favorites</h1>
+
+      {hasFavorites ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-10">
+          {favorites.map((drink) => (
+            <DrinkCard key={drink.idDrink} drink={drink} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-center my-10 text-2xl">
+          🍸🥂 Find your Favorites 🍻🍹
+        </p>
+      )}
     </>
   );
 };
