@@ -13,6 +13,7 @@ const Modal = () => {
   const selectedRecipe = useAppStore((state) => state.selectedRecipe);
   const handleFavorite = useAppStore((state) => state.handleFavorite);
   const favoriteExists = useAppStore((state) => state.favoriteExists);
+  const showNotification = useAppStore((state) => state.showNotification);
 
   // Dynamically extract ingredient + measure pairs
   const getIngredientsWithMeasures = () => {
@@ -71,8 +72,17 @@ const Modal = () => {
               <button
                 className="w-full rounded bg-orange-400 p-3 font-semibold uppercase text-white shadow hover:bg-orange-500 transition-colors duration-500 ease-in-out"
                 onClick={() => {
+                  const isFav = favoriteExists(selectedRecipe.idDrink);
+
                   handleFavorite(selectedRecipe);
                   closeModal();
+
+                  showNotification({
+                    text: isFav
+                      ? 'Removed from favorites'
+                      : 'Added to favorites',
+                    error: false,
+                  });
                 }}
               >
                 {favoriteExists(selectedRecipe.idDrink)
