@@ -20,6 +20,8 @@ const Header = () => {
 
   const searchRecipes = useAppStore((state) => state.searchRecipes);
 
+  const showNotification = useAppStore((state) => state.showNotification);
+
   useEffect(() => {
     fetchCategories();
   }, [fetchCategories]);
@@ -29,7 +31,7 @@ const Header = () => {
 
     // Check if all inputs are filled
     if (Object.values(searchFilters).includes('')) {
-      alert('All inputs are required');
+      showNotification({ text: 'All inputs are required', error: true });
       return;
     }
 
