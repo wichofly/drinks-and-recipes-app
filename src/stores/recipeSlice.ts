@@ -11,6 +11,7 @@ export type RecipeSliceType = {
   drinks: Drinks;
   selectedRecipe: Recipe;
   modal: boolean;
+  isLoading: boolean;
   fetchCategories: () => Promise<void>;
   searchRecipes: (searchFilter: SearchFilter) => Promise<void>;
   selectRecipe: (id: Drink['idDrink']) => Promise<void>;
@@ -38,11 +39,15 @@ export const createRecipeSlice: StateCreator<RecipeSliceType> = (set) => ({
     });
   },
 
+  isLoading: false,
+
   searchRecipes: async (filters) => {
+    set({ isLoading: true });
     const drinks = await getRecipes(filters);
     console.log(drinks);
     set({
       drinks,
+      isLoading: false,
     });
   },
 
