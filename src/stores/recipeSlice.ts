@@ -31,6 +31,8 @@ export const createRecipeSlice: StateCreator<RecipeSliceType> = (set) => ({
 
   modal: false,
 
+  isLoading: false,
+
   fetchCategories: async () => {
     const categories = await getCategories();
     console.log(categories);
@@ -38,8 +40,6 @@ export const createRecipeSlice: StateCreator<RecipeSliceType> = (set) => ({
       categories,
     });
   },
-
-  isLoading: false,
 
   searchRecipes: async (filters) => {
     set({ isLoading: true });
