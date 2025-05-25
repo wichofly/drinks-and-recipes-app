@@ -2,7 +2,7 @@
 
 A sleek and responsive web application that lets you explore drink recipes by category and ingredients, view details, and save your favorites — powered by the [CocktailDB API](https://www.thecocktaildb.com/api.php).
 
-Live demo 👉 [Drink and Recipes App on Vercel](https://drink-and-recipes-app.vercel.app)
+Live demo 👉 [Drink and Recipes App on Vercel](https://drink-recipes-app.vercel.app/)
 
 ---
 
@@ -48,18 +48,18 @@ This project showcases a modern React + TypeScript application with:
 - **Zustand** — state management
 - **Zod** — runtime schema validation
 - **TailwindCSS v4** — styling
-- **Headless UI** — accessible modal
-- **Heroicons** — icons
+- **[Headless UI](https://headlessui.com/react/transition#transitioning-on-initial-mount)** — accessible modal
+- **[Heroicons](https://heroicons.com/)** — icons
 - **Axios** — API requests
 
 ---
 
 ## Key Technologies Explained
 
-- **Zustand**
-  Manages global state with slices (recipes, favorites, UI). Includes persistent state for favorites using `zustand/persist`.
+- **[Zustand](https://zustand.docs.pmnd.rs/getting-started/introduction)**
+  Manages global state with slices (recipes, favorites, UI). It can divide main store into smaller individual stores to achieve modularity, using [Slices Pattern](https://zustand.docs.pmnd.rs/guides/slices-pattern). Also includes persistent state for favorites using `zustand/persist`, favorites list is stored in localStorage under the key favorite-store. This is simple to accomplish in Zustand!.
 
-- **Zod**
+- **[Zod](https://zod.dev/)**
   Validates and parses API responses. Keeps types in sync with actual data from TheCocktailDB.
 
 - **CSS Loaders**
@@ -71,10 +71,10 @@ This project showcases a modern React + TypeScript application with:
 - **Lazy Hook**
   Reduces initial bundle size by dynamically loading the `IndexPage` and `FavoritePage` only when needed.
 
-- **Modal** (`@headlessui/react`)
+- **[Modal](https://headlessui.com/react/transition#examples)**
   Displays detailed recipe information in a clean, accessible, animated dialog.
 
-- **Notification** (`@headlessui/react`)
+- **[Notification](https://headlessui.com/react/transition#examples)**
   Provides user feedback using toast notifications with icons and transition effects.
 
 ---
@@ -82,6 +82,6 @@ This project showcases a modern React + TypeScript application with:
 ## Deployment
 
 The project is live on **Vercel**:
-👉 [Drink and Recipes App](https://drink-and-recipes-app.vercel.app)
+👉 [Drink and Recipes App](https://drink-recipes-app.vercel.app/)
 
 ---
