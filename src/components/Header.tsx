@@ -79,6 +79,17 @@ const Header = () => {
             >
               Favorites
             </NavLink>
+
+            <NavLink
+              to="/AI"
+              className={({ isActive }) =>
+                isActive
+                  ? 'text-orange-500 uppercase font-semibold'
+                  : 'text-white uppercase font-semibold'
+              }
+            >
+              Generate AI
+            </NavLink>
           </nav>
         </div>
 
