@@ -1,10 +1,33 @@
+import { FormEvent } from 'react';
+import { useAppStore } from '../stores/useAppStore';
+
 export default function GenerateAIPage() {
+  const showNotification = useAppStore((state) => state.showNotification);
+  const generateRecipe = useAppStore((state) => state.generateRecipe);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = new FormData(e.currentTarget);
+    const prompt = form.get('prompt') as string;
+
+    if (prompt.trim() === '') {
+      showNotification({
+        text: 'Please enter ingredients to generate a recipe.',
+        error: true,
+      });
+      return;
+    }
+
+    await generateRecipe(prompt);
+  };
+
   return (
     <>
       <h1 className="text-6xl font-semibold">Generate Recipes with AI </h1>
 
       <div className="max-w-4xl mx-auto">
-        <form onSubmit={() => {}} className="flex flex-col space-y-3 py-10">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-3 py-10">
           <div className="relative">
             <input
               name="prompt"
