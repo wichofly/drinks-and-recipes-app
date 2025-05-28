@@ -1,10 +1,12 @@
 import { FormEvent } from 'react';
 import { useAppStore } from '../stores/useAppStore';
+import Spinner from '../components/Spinner';
 
 export default function GenerateAIPage() {
   const showNotification = useAppStore((state) => state.showNotification);
   const generateRecipe = useAppStore((state) => state.generateRecipe);
   const recipe = useAppStore((state) => state.recipe);
+  const isGenerating = useAppStore((state) => state.isGenerating);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,7 +41,10 @@ export default function GenerateAIPage() {
             <button
               type="submit"
               aria-label="Generate Recipe"
-              className={`cursor-pointer absolute top-1/2 right-5 transform -translate-x-1/2 -translate-y-1/2`}
+              className={`cursor-pointer absolute top-1/2 right-5 transform -translate-x-1/2 -translate-y-1/2 ${
+                isGenerating ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              disabled={isGenerating}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +63,7 @@ export default function GenerateAIPage() {
             </button>
           </div>
         </form>
-
+        {isGenerating && <Spinner />}
         <div className="py-10 whitespace-pre-wrap">{recipe}</div>
       </div>
     </>
