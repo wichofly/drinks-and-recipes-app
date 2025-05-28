@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useAppStore } from '../stores/useAppStore';
 
 const Header = () => {
@@ -54,9 +54,7 @@ const Header = () => {
       <div className="mx-auto container px-5 py-16">
         <div className="flex justify-between items-center">
           <div>
-            <Link to="/">
-              <img className="w-32" src="/logo.svg" alt="logoType" />
-            </Link>
+            <img className="w-32" src="/logo.svg" alt="logoType" />
           </div>
 
           <nav className="flex gap-4">
@@ -80,17 +78,6 @@ const Header = () => {
               }
             >
               Favorites
-            </NavLink>
-
-            <NavLink
-              to="/AI"
-              className={({ isActive }) =>
-                isActive
-                  ? 'text-orange-500 uppercase font-semibold'
-                  : 'text-white uppercase font-semibold'
-              }
-            >
-              Generate AI
             </NavLink>
           </nav>
         </div>
