@@ -1,9 +1,13 @@
 import { FormEvent } from 'react';
 import { useAppStore } from '../stores/useAppStore';
+import Spinner from '../components/Spinner';
+import ReactMarkdown from 'react-markdown';
 
 export default function GenerateAIPage() {
   const showNotification = useAppStore((state) => state.showNotification);
   const generateRecipe = useAppStore((state) => state.generateRecipe);
+  const recipe = useAppStore((state) => state.recipe);
+  const isGenerating = useAppStore((state) => state.isGenerating);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,13 +36,18 @@ export default function GenerateAIPage() {
             <input
               name="prompt"
               id="prompt"
-              className="border bg-white p-4 rounded-lg w-full border-slate-800"
+              className="w-full border border-slate-800 p-4 pr-16 rounded-lg bg-white focus:outline-none"
               placeholder="Generate a recipe with ingredients. E.g. Drink with Tequila and Strawberry."
             />
             <button
               type="submit"
               aria-label="Generate Recipe"
-              className={`cursor-pointer absolute top-1/2 right-5 transform -translate-x-1/2 -translate-y-1/2`}
+              className={`cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 transition ${
+                isGenerating
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:scale-110'
+              }`}
+              disabled={isGenerating}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,8 +66,12 @@ export default function GenerateAIPage() {
             </button>
           </div>
         </form>
-
-        <div className="py-10 whitespace-pre-wrap"></div>
+        {isGenerating && <Spinner />}
+        {recipe && (
+          <div className="prose prose-lg max-w-4xl mx-auto mt-10 text-gray-800 bg-white p-6 rounded-lg shadow-lg overflow-x-auto space-y-6">
+            <ReactMarkdown>{recipe}</ReactMarkdown>
+          </div>
+        )}
       </div>
     </>
   );
