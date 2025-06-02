@@ -68,7 +68,7 @@ export default function GenerateAIPage() {
         </form>
         {isGenerating && <Spinner />}
         {recipe && (
-          <div className="prose prose-lg max-w-3xl mx-auto mt-10 text-gray-800 bg-white p-6 rounded-lg shadow-lg overflow-x-auto space-y-6">
+          <div className="prose prose-lg max-w-4xl mx-auto mt-10 text-gray-800 bg-white p-6 rounded-lg shadow-lg overflow-x-auto space-y-6">
             <ReactMarkdown>{recipe}</ReactMarkdown>
           </div>
         )}
