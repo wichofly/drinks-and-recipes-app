@@ -28,9 +28,11 @@ export default function GenerateAIPage() {
 
   return (
     <>
-      <h1 className="text-6xl font-semibold">Generate Recipes with AI </h1>
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold px-4 md:px-4 lg:px-0">
+        Generate Recipes with AI
+      </h1>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto px-4 md:px-4 lg:px-0">
         <form onSubmit={handleSubmit} className="flex flex-col space-y-3 py-10">
           <div className="relative">
             <input

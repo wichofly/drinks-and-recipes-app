@@ -10,7 +10,9 @@ const IndexPage = () => {
 
   return (
     <>
-      <h1 className="text-6xl font-semibold">Recipes</h1>
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold px-4 md:px-4 lg:px-0">
+        Recipes
+      </h1>
 
       {isLoading ? (
         <div className="my-10 flex justify-center">
