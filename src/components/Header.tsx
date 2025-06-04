@@ -52,10 +52,10 @@ const Header = () => {
   return (
     <header className={isHome ? 'bg-header' : 'bg-slate-800'}>
       <div className="mx-auto container px-5 py-16">
-        <div className="flex justify-between items-center">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0 flex justify-center w-full md:w-auto">
             <Link to="/">
-              <img className="w-32" src="/logo.svg" alt="logoType" />
+              <img className="w-24 md:w-32 mx-auto" src="/logo.svg" alt="logoType" />
             </Link>
           </div>
 
@@ -63,9 +63,8 @@ const Header = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive
-                  ? 'text-orange-500 uppercase font-semibold'
-                  : 'text-white uppercase font-semibold'
+                (isActive ? 'text-orange-500' : 'text-white') +
+                ' uppercase font-semibold text-sm md:text-base'
               }
             >
               Start
@@ -74,9 +73,8 @@ const Header = () => {
             <NavLink
               to="/favorites"
               className={({ isActive }) =>
-                isActive
-                  ? 'text-orange-500 uppercase font-semibold'
-                  : 'text-white uppercase font-semibold'
+                (isActive ? 'text-orange-500' : 'text-white') +
+                ' uppercase font-semibold text-sm md:text-base'
               }
             >
               Favorites
@@ -85,9 +83,8 @@ const Header = () => {
             <NavLink
               to="/AI"
               className={({ isActive }) =>
-                isActive
-                  ? 'text-orange-500 uppercase font-semibold'
-                  : 'text-white uppercase font-semibold'
+                (isActive ? 'text-orange-500' : 'text-white') +
+                ' uppercase font-semibold text-sm md:text-base'
               }
             >
               Generate AI
