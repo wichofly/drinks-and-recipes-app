@@ -6,8 +6,6 @@ Now with AI: Generate personalized drink recipes based on your own ingredients u
 
 Live demo 👉 [Drink and Recipes App on Vercel](https://drink-recipes-app.vercel.app/)
 
----
-
 ## ✨ Summary
 
 This project showcases a modern React + TypeScript application with:
@@ -19,8 +17,6 @@ This project showcases a modern React + TypeScript application with:
 - **Clean notifications system**
 - **Custom animated loaders** from [cssloaders.github.io](https://cssloaders.github.io)
 - **AI-powered recipe generation** using OpenRouter + Vercel AI SDK
-
----
 
 ## APIs Used (from [TheCocktailDB](https://www.thecocktaildb.com/api.php))
 
@@ -38,8 +34,6 @@ This project showcases a modern React + TypeScript application with:
 | Vercel AI SDK  | AI stream generation via OpenRouter           |
 | OpenRouter API | Access to multiple LLMs with easy integration |
 
----
-
 ## Features
 
 - Search drinks by ingredient and category
@@ -50,8 +44,6 @@ This project showcases a modern React + TypeScript application with:
 - Fully typed with Zod for API safety
 - AI Recipe Generator using OpenRouter + Vercel AI SDK
 - Markdown Output using react-markdown
-
----
 
 ## Technologies Used
 
@@ -65,8 +57,6 @@ This project showcases a modern React + TypeScript application with:
 - **Axios** — API requests
 - **[OpenRouter](https://openrouter.ai/docs/community/frameworks#vercel-ai-sdk)** - API Gateway for modern LLMs
 - **[ai](https://ai-sdk.dev/docs/ai-sdk-core/settings)** - AI SDK is the TypeScript toolkit designed to help developers build AI-powered applications and agents with React and more
-
----
 
 ## Key Technologies Explained
 
@@ -100,11 +90,7 @@ This project showcases a modern React + TypeScript application with:
 - **[ReactMarkdown](https://www.npmjs.com/package/react-markdown)**
   AI-generated responses (recipes) are streamed and rendered beautifully using `ReactMarkdown` with Tailwind’s `prose` utility classes.
 
----
-
 ## Deployment
 
 The project is live on **Vercel**:
 👉 [Drink and Recipes App](https://drink-recipes-app.vercel.app/)
-
----
