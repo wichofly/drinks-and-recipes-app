@@ -4,8 +4,6 @@ A sleek and responsive web application that lets you explore drink recipes by ca
 
 Now with AI: Generate personalized drink recipes based on your own ingredients using natural language prompts!
 
-Live demo 👉 [Drink and Recipes App on Vercel](https://drink-recipes-app.vercel.app/)
-
 ## ✨ Summary
 
 This project showcases a modern React + TypeScript application with:
