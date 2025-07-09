@@ -53,7 +53,7 @@ This project showcases a modern React + TypeScript application with:
 - **[Headless UI](https://headlessui.com/react/transition#transitioning-on-initial-mount)** — accessible modal
 - **[Heroicons](https://heroicons.com/)** — icons
 - **Axios** — API requests
-- **[OpenRouter](https://openrouter.ai/docs/community/frameworks#vercel-ai-sdk)** - API Gateway for modern LLMs
+- **[OpenRouter](https://openrouter.ai/docs/community/vercel-ai-sdk)** - API Gateway for modern LLMs | Using OpenRouter with Vercel AI SDK
 - **[ai](https://ai-sdk.dev/docs/ai-sdk-core/settings)** - AI SDK is the TypeScript toolkit designed to help developers build AI-powered applications and agents with React and more
 
 ## Key Technologies Explained

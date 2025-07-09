@@ -5,5 +5,5 @@ export const openrouter = createOpenRouter({
 });
 
 /**
- * Using ai-sdk from OpenRouter to create an AI client. https://openrouter.ai/docs/community/frameworks#vercel-ai-sdk
+ * Using ai-sdk from OpenRouter to create an AI client. https://openrouter.ai/docs/community/vercel-ai-sdk
  */
