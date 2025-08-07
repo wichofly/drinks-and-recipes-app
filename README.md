@@ -91,4 +91,4 @@ This project showcases a modern React + TypeScript application with:
 ## Deployment
 
 The project is live on **Vercel**:
-👉 [Drink and Recipes App](https://drink-recipes-five.vercel.app/)
+👉 [Drink and Recipes App](https://drinksrecipes-ai.vercel.app/)
