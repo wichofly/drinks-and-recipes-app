@@ -4,7 +4,7 @@ import { openrouter } from '../lib/ai';
 export default {
   async generateRecipe(prompt: string) {
     const result = streamText({
-      model: openrouter('meta-llama/llama-3.3-70b-instruct:free'),
+      model: openrouter('qwen/qwen3-vl-30b-a3b-thinking'),
       prompt,
       system:
         'You are a nutritionist or dietitian-nutritionist. You help people stay healthy.' +
