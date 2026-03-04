@@ -4,7 +4,8 @@ import { openrouter } from '../lib/ai';
 export default {
   async generateRecipe(prompt: string) {
     const result = streamText({
-      model: openrouter('qwen/qwen3-vl-30b-a3b-thinking'),
+      // model: openrouter('qwen/qwen3-vl-30b-a3b-thinking'),
+      model: openrouter('qwen/qwen3-235b-a22b-thinking-2507'),
       prompt,
       system:
         'You are a nutritionist or dietitian-nutritionist. You help people stay healthy.' +
