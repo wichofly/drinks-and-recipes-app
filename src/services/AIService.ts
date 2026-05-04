@@ -1,5 +1,5 @@
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY?.trim();
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_MODELS = ['gemini-2.5-flash', 'gemini-2.5-flash-lite'];
 
 type GeminiResponse = {
   candidates?: Array<{
@@ -14,17 +14,9 @@ type GeminiResponse = {
   };
 };
 
-async function* generateGeminiText(prompt: string): AsyncGenerator<string> {
-  if (!GEMINI_API_KEY) {
-    throw new Error('Missing VITE_GEMINI_API_KEY in your .env file');
-  }
-
-  if (GEMINI_API_KEY.startsWith('tu_api_key')) {
-    throw new Error('Replace VITE_GEMINI_API_KEY with a real Google AI Studio API key');
-  }
-
+async function requestGeminiText(prompt: string, model: string) {
   const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
     {
       method: 'POST',
       headers: {
@@ -56,7 +48,7 @@ async function* generateGeminiText(prompt: string): AsyncGenerator<string> {
   const data = (await response.json()) as GeminiResponse;
 
   if (!response.ok) {
-    throw new Error(data.error?.message ?? 'Gemini request failed');
+    throw new Error(data.error?.message ?? `Gemini request failed with status ${response.status}`);
   }
 
   const text = data.candidates?.[0]?.content?.parts
@@ -67,7 +59,32 @@ async function* generateGeminiText(prompt: string): AsyncGenerator<string> {
     throw new Error('Gemini did not return any text');
   }
 
-  yield text;
+  return text;
+}
+
+async function* generateGeminiText(prompt: string): AsyncGenerator<string> {
+  if (!GEMINI_API_KEY) {
+    throw new Error(
+      'Missing VITE_GEMINI_API_KEY. Add it to .env locally and to your hosting environment variables in production.'
+    );
+  }
+
+  if (GEMINI_API_KEY.startsWith('tu_api_key')) {
+    throw new Error('Replace VITE_GEMINI_API_KEY with a real Google AI Studio API key');
+  }
+
+  let lastError: Error | null = null;
+
+  for (const model of GEMINI_MODELS) {
+    try {
+      yield await requestGeminiText(prompt, model);
+      return;
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error('Gemini request failed');
+    }
+  }
+
+  throw lastError ?? new Error('Gemini request failed');
 }
 
 export default {

@@ -23,7 +23,17 @@ export default function GenerateAIPage() {
       return;
     }
 
-    await generateRecipe(prompt);
+    try {
+      await generateRecipe(prompt);
+    } catch (error) {
+      showNotification({
+        text:
+          error instanceof Error
+            ? error.message
+            : 'The AI service is not available right now. Please try again later.',
+        error: true,
+      });
+    }
   };
 
   return (
