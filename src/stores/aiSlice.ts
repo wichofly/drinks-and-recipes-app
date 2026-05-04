@@ -15,14 +15,16 @@ export const createAISlice: StateCreator<AIStateType> = (set) => ({
   generateRecipe: async (prompt) => {
     set({ recipe: '', isGenerating: true }); // Reset recipe before generating a new one and show it is generating new recipe
 
-    const data = await AIService.generateRecipe(prompt);
+    try {
+      const data = await AIService.generateRecipe(prompt);
 
-    for await (const textPart of data) {
-      set((state) => ({
-        recipe: state.recipe + textPart,
-      }));
+      for await (const textPart of data) {
+        set((state) => ({
+          recipe: state.recipe + textPart,
+        }));
+      }
+    } finally {
+      set({ isGenerating: false }); // Set generating state to false after generation is complete
     }
-
-    set({ isGenerating: false }); // Set generating state to false after generation is complete
   },
 });
